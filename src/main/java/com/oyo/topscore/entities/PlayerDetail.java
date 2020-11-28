@@ -13,7 +13,7 @@ import java.time.OffsetDateTime;
 public class PlayerDetail {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "id")
     public Long id;
 
@@ -27,5 +27,9 @@ public class PlayerDetail {
     @DateTimeFormat(iso= DateTimeFormat.ISO.DATE_TIME)
     @Column(name = "score_created_datetime")
     private OffsetDateTime scoreCreatedDateTime;
+
+    public void setScoreCreatedDateTime(String scoreCreatedDateTime) {
+        this.scoreCreatedDateTime = OffsetDateTime.parse(scoreCreatedDateTime);
+    }
 
 }

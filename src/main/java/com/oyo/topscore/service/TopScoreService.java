@@ -9,4 +9,7 @@ public interface TopScoreService {
 
     /** return score. */
     public String getScore(Long id);
+
+    /** delete score. */
+    public String deleteScore(Long id);
 }

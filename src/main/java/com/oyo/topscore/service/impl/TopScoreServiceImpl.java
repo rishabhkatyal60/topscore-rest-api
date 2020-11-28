@@ -35,10 +35,17 @@ public class TopScoreServiceImpl implements TopScoreService {
      * @return {@inheritDoc}
      */
     public String getScore(Long id) {
-//        logger.info("Id is:",playerDetailRepository.findById(id).get().getId());
-//        logger.info("Name is:",playerDetailRepository.findById(id).get().getPlayerName());
-//        logger.info("Date is:",playerDetailRepository.findById(id).get().getScoreCreatedDateTime());
-//        logger.info("Score is:",playerDetailRepository.findById(id).get().getScore());
         return String.valueOf(playerDetailRepository.findById(id).get().getScore());
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @param {@inheritDoc}
+     * @return {@inheritDoc}
+     */
+    public String deleteScore(Long id) {
+        playerDetailRepository.delete(playerDetailRepository.getOne(id));
+        return "Record with id: "+id+" is deleted";
     }
 }
