@@ -39,7 +39,12 @@ public class TopScoreController {
         } if(scoreCreatedAfterDateTime!=null){
             return topScoreService.getListOfScoresAfterDateTime(scoreCreatedAfterDateTime);
         } else {
-            return topScoreService.getListOfScoresForListOfPlayers(listOfPlayers);
+            String listOfPlayersToLowerCase[]=new String[listOfPlayers.length];
+            for (int i = 0; i < listOfPlayers.length; i++)
+            {
+                listOfPlayersToLowerCase[i]=listOfPlayers[i].toLowerCase();
+            }
+            return topScoreService.getListOfScoresForListOfPlayers(listOfPlayersToLowerCase);
         }
     }
 }

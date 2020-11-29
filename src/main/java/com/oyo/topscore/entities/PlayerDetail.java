@@ -32,4 +32,8 @@ public class PlayerDetail {
         this.scoreCreatedDateTime = LocalDateTime.parse(scoreCreatedDateTime);
     }
 
+    public void setPlayerName(String playerName) {
+        this.playerName = playerName.toLowerCase();
+    }
+
 }
