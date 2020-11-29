@@ -5,6 +5,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.Min;
+import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
 
 @Data
@@ -24,12 +25,11 @@ public class PlayerDetail {
     @Column(name = "score")
     private int score;
 
-    @DateTimeFormat(iso= DateTimeFormat.ISO.DATE_TIME)
     @Column(name = "score_created_datetime")
-    private OffsetDateTime scoreCreatedDateTime;
+    private LocalDateTime scoreCreatedDateTime;
 
     public void setScoreCreatedDateTime(String scoreCreatedDateTime) {
-        this.scoreCreatedDateTime = OffsetDateTime.parse(scoreCreatedDateTime);
+        this.scoreCreatedDateTime = LocalDateTime.parse(scoreCreatedDateTime);
     }
 
 }

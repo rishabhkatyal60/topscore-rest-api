@@ -1,2 +1,2 @@
-INSERT INTO PLAYER_DETAIL (id, player_name, score, score_created_datetime) VALUES (1, 'DHONI', 70, '2015-01-14 21:32:29');
-INSERT INTO PLAYER_DETAIL (id, player_name, score, score_created_datetime) VALUES (2, 'KHOLI', 80, '2015-01-14 22:32:29');
+INSERT INTO PLAYER_DETAIL (id, player_name, score, score_created_datetime) VALUES (1, 'DHONI', 70, '2018-11-21T11:13:13.274');
+INSERT INTO PLAYER_DETAIL (id, player_name, score, score_created_datetime) VALUES (2, 'KHOLI', 80, '2018-01-21T11:13:13.274');
