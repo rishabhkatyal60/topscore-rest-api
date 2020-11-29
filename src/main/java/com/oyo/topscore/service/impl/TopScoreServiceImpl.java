@@ -62,8 +62,8 @@ public class TopScoreServiceImpl implements TopScoreService {
      * @param {@inheritDoc}
      * @return {@inheritDoc}
      */
-    public List<Integer> getListOfScoresBeforeDateTime(String scoreCreatedBeforeDateTime) {
-        return playerDetailRepository.findByStartDateBefore(LocalDateTime.parse(scoreCreatedBeforeDateTime));
+    public Page<Integer> getListOfScoresBeforeDateTime(String scoreCreatedBeforeDateTime, Pageable page) {
+        return playerDetailRepository.findByStartDateBefore(LocalDateTime.parse(scoreCreatedBeforeDateTime), page);
     }
 
     /**
@@ -72,8 +72,8 @@ public class TopScoreServiceImpl implements TopScoreService {
      * @param {@inheritDoc}
      * @return {@inheritDoc}
      */
-    public List<Integer> getListOfScoresAfterDateTime(String scoreCreatedAfterDateTime) {
-        return playerDetailRepository.findByStartDateAfter(LocalDateTime.parse(scoreCreatedAfterDateTime));
+    public Page<Integer> getListOfScoresAfterDateTime(String scoreCreatedAfterDateTime, Pageable page) {
+        return playerDetailRepository.findByStartDateAfter(LocalDateTime.parse(scoreCreatedAfterDateTime), page);
     }
 
     /**
@@ -82,7 +82,7 @@ public class TopScoreServiceImpl implements TopScoreService {
      * @param {@inheritDoc}
      * @return {@inheritDoc}
      */
-    public List<Integer> getListOfScoresForListOfPlayers(String[] listOfPlayers) {
-        return playerDetailRepository.findByPlayerNameIn(listOfPlayers);
+    public Page<Integer> getListOfScoresForListOfPlayers(String[] listOfPlayers, Pageable page) {
+        return playerDetailRepository.findByPlayerNameIn(listOfPlayers, page);
     }
 }
