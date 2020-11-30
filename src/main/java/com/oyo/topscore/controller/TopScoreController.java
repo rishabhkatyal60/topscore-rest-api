@@ -57,4 +57,9 @@ public class TopScoreController {
             return pagedResult.getContent();
         }
     }
+
+    @GetMapping("/player-history/{playerName}")
+    public String getPlayerHistory(@PathVariable("playerName") String playerName){
+        return topScoreService.getPlayerHistory(playerName.toLowerCase());
+    }
 }

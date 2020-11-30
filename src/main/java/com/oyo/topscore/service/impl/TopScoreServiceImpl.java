@@ -7,13 +7,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.time.OffsetDateTime;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 @Service
@@ -84,5 +84,28 @@ public class TopScoreServiceImpl implements TopScoreService {
      */
     public Page<Integer> getListOfScoresForListOfPlayers(String[] listOfPlayers, Pageable page) {
         return playerDetailRepository.findByPlayerNameIn(listOfPlayers, page);
+    }
+
+    @Override
+    public String getPlayerHistory(String playerName) {
+
+        int sum = 0;
+        float avg = 0;
+        List<PlayerDetail> playerDetails = playerDetailRepository.findByPlayerName(playerName);
+        PlayerDetail playerDetailMax =  Collections.max(playerDetails, Comparator.comparing(playerDetail -> playerDetail.getScore()));
+        PlayerDetail playerDetailMin =  Collections.min(playerDetails, Comparator.comparing(playerDetail -> playerDetail.getScore()));
+
+        List<String> playerScoreAndTime = new ArrayList<String>();
+        for(int i=0;i<playerDetails.size();i++) {
+            sum += playerDetails.get(i).getScore();
+            playerScoreAndTime.add("Score:"+playerDetails.get(i).getScore() + " - Score Create Date Time: " + playerDetails.get(i).getScoreCreatedDateTime());
+        }
+        avg=sum/playerDetails.size();
+
+        return "Player Name:" +playerName+"\n"+
+                "Max Score is: "+playerDetailMax.getScore()+" Max Score Created Datetime is: "+playerDetailMax.getScoreCreatedDateTime()+"\n"+
+                "Min Score is: "+playerDetailMin.getScore()+" Min Score Created Datetime is: "+playerDetailMin.getScoreCreatedDateTime()+"\n"+
+                "Average Score is: "+avg+"\n"+
+                "List of Score and Time"+playerScoreAndTime;
     }
 }

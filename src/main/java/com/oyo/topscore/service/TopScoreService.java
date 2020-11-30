@@ -26,4 +26,7 @@ public interface TopScoreService {
 
     /** get list of scores by players name */
     Page<Integer> getListOfScoresForListOfPlayers(String[] listOfPlayers, Pageable page);
+
+    /** get player history */
+    public String getPlayerHistory(String playerName);
 }

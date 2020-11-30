@@ -24,4 +24,7 @@ public interface PlayerDetailRepository extends JpaRepository<PlayerDetail, Long
     @Query(value = "SELECT pd.score FROM PLAYER_DETAIL pd WHERE pd.player_name in ?1", nativeQuery = true)
     Page<Integer> findByPlayerNameIn(@Param("listOfPlayers") String[] listOfPlayers, Pageable page);
 
+    @Query(value = "SELECT * FROM PLAYER_DETAIL pd WHERE pd.player_name = ?1", nativeQuery = true)
+    List<PlayerDetail> findByPlayerName(@Param("playerName") String playerName);
+
 }
