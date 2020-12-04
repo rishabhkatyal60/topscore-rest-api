@@ -52,7 +52,9 @@ public class TopScoreServiceImpl implements TopScoreService {
      * @return {@inheritDoc}
      */
     public String deleteScore(Long id) {
-        playerDetailRepository.delete(playerDetailRepository.getOne(id));
+        if (playerDetailRepository.findById(id).get() !=null) {
+            playerDetailRepository.delete(playerDetailRepository.getOne(id));
+        }
         return "Record with id: "+id+" is deleted";
     }
 

@@ -9,6 +9,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 
 @RestController
@@ -24,12 +25,21 @@ public class TopScoreController {
 
     @GetMapping("/score/{id}")
     public String getScore(@PathVariable("id") Long id){
-        return topScoreService.getScore(id);
+        try{
+            return topScoreService.getScore(id);
+        } catch (NoSuchElementException e) {
+            return "Score Id: "+id+" does not exist";
+        }
+
     }
 
     @DeleteMapping("/score/{id}")
     public String deleteScore(@PathVariable("id") Long id){
-        return topScoreService.deleteScore(id);
+        try{
+            return topScoreService.deleteScore(id);
+        } catch (NoSuchElementException e) {
+            return "Record Id: "+id+" does not exist";
+        }
     }
 
     @GetMapping("/score/score-list")
