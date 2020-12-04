@@ -70,6 +70,11 @@ public class TopScoreController {
 
     @GetMapping("/player-history/{playerName}")
     public String getPlayerHistory(@PathVariable("playerName") String playerName){
-        return topScoreService.getPlayerHistory(playerName.toLowerCase());
+        try{
+            return topScoreService.getPlayerHistory(playerName.toLowerCase());
+        } catch(NoSuchElementException e) {
+            return "Player Name: "+playerName+ " Not found";
+        }
+
     }
 }
