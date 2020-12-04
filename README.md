@@ -72,6 +72,9 @@ Request Body Example: JSON
 }
 ```
 
+##Swagger : Rest API Documentation
+http://localhost:8080/swagger-ui.html
+
 #### Get Score (GET)
 Request URL: http://localhost:8080/score/{id}
 Example: http://localhost:8080/score/2
