@@ -5,7 +5,7 @@ Top Score Rest API
 ```
 The application source structure is as follows.
 .
-+-- src                                 # Source folder for x largest numbers
++-- src                                 # Source folder for top score rest api
 +-- Dockerfile                          # Docker file for application
 +-- pom.xml                             # Applicaton pom file
 +-- README.MD
