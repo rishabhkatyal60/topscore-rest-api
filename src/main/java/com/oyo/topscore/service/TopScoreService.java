@@ -10,7 +10,7 @@ import java.util.List;
 public interface TopScoreService {
 
     /** create score. */
-    public String createScore(PlayerDetail playerDetails);
+    public PlayerDetail createScore(PlayerDetail playerDetails);
 
     /** return score. */
     public String getScore(Long id);

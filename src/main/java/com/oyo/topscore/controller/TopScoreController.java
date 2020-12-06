@@ -19,7 +19,7 @@ public class TopScoreController {
     TopScoreService topScoreService;
 
     @PostMapping("/create-score")
-    public String createScore(@RequestBody PlayerDetail playerDetail){
+    public PlayerDetail createScore(@RequestBody PlayerDetail playerDetail){
         return topScoreService.createScore(playerDetail);
         }
 

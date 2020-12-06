@@ -30,9 +30,10 @@ public class TopScoreServiceImpl implements TopScoreService {
      * @param {@inheritDoc}
      * @return {@inheritDoc}
      */
-    public String createScore(PlayerDetail playerDetail) {
-        playerDetailRepository.save(playerDetail);
-        return playerDetail.getId().toString();
+    public PlayerDetail createScore(PlayerDetail playerDetail) {
+        return playerDetailRepository.save(playerDetail);
+
+
         }
 
     /**
