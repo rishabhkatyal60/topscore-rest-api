@@ -13,6 +13,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.time.LocalDateTime;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 import static org.mockito.Mockito.when;
@@ -46,6 +47,20 @@ public class TopScoreServiceTests {
         Assert.assertEquals("80",topScoreServiceImpl.getScore(100l));
 
     }
-    
+
+    @Test
+    public void getPlayerScoreByIdWithFailure() {
+        PlayerDetail playerDetail = new PlayerDetail(100l,"Rishabh",80, LocalDateTime.parse("2018-11-21T11:13:13.274"));
+        when(playerDetailRepository.findById(10l)).thenThrow(NoSuchElementException.class);
+
+        String score;
+
+        try{
+            score = topScoreServiceImpl.getScore(10l);
+        } catch (NoSuchElementException e) {
+            score = "Score Id: "+10+" does not exist";
+        }
+        Assert.assertEquals("Score Id: 10 does not exist",score);
+    }
 }
 
